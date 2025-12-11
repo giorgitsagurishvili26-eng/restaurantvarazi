@@ -58,9 +58,9 @@ const Hero = () => {
           animationFillMode: "forwards"
         }}>
           <Button variant="hero" size="xl" asChild>
-            <a href="https://rezto.ge" target="_blank" rel="noopener noreferrer">
+            <Link to="/menu">
               {t("hero.viewMenu")}
-            </a>
+            </Link>
           </Button>
           <Button variant="heroOutline" size="xl" asChild>
             <Link to="/contact">{t("hero.reserveTable")}</Link>
