@@ -52,8 +52,8 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation - Centered */}
-        <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-10">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.path}
