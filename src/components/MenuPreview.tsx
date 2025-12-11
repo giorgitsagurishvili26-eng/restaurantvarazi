@@ -64,7 +64,12 @@ const MenuPreview = () => {
             </div>
 
             <Button variant="hero" size="lg" asChild>
-              <a href="/menu" className="inline-flex items-center gap-2">
+              <a
+                href="https://rezto.ge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
                 {t("menu.viewFull")}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
