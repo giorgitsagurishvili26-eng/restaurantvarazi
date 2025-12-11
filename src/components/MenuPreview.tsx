@@ -1,27 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import interiorAmberImage from "@/assets/interior-amber-lights.jpg";
-
-const menuCategories = [
-  {
-    title: "Starters",
-    items: ["Pkhali Trio", "Eggplant Rolls", "Cheese Board"],
-  },
-  {
-    title: "Main Courses",
-    items: ["Khinkali", "Mtsvadi", "Chahushuli"],
-  },
-  {
-    title: "Desserts",
-    items: ["Churchkhela", "Pelamushi", "Honey Cake"],
-  },
-  {
-    title: "Drinks",
-    items: ["Georgian Wine Selection", "Craft Cocktails", "Fresh Lemonades"],
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const MenuPreview = () => {
+  const { t } = useLanguage();
+
+  const menuCategories = [
+    {
+      title: t("menu.starters"),
+      items: ["Pkhali Trio", "Eggplant Rolls", "Cheese Board"],
+    },
+    {
+      title: t("menu.mainCourses"),
+      items: ["Khinkali", "Mtsvadi", "Chahushuli"],
+    },
+    {
+      title: t("menu.desserts"),
+      items: ["Churchkhela", "Pelamushi", "Honey Cake"],
+    },
+    {
+      title: t("menu.drinks"),
+      items: ["Georgian Wine Selection", "Craft Cocktails", "Fresh Lemonades"],
+    },
+  ];
+
   return (
     <section className="relative overflow-hidden">
       <div className="grid lg:grid-cols-2 min-h-[700px]">
@@ -39,10 +42,10 @@ const MenuPreview = () => {
         <div className="bg-charcoal text-cream section-padding flex items-center">
           <div className="max-w-lg">
             <span className="text-gold text-xs tracking-[0.3em] uppercase mb-4 block">
-              Culinary Excellence
+              {t("menu.label")}
             </span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 leading-tight">
-              A Taste of<br />Modern Georgia
+              {t("menu.title1")}<br />{t("menu.title2")}
             </h2>
 
             <div className="grid grid-cols-2 gap-8 mb-10">
@@ -67,7 +70,7 @@ const MenuPreview = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
               >
-                View Full Menu
+                {t("menu.viewFull")}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </Button>

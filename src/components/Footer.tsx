@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
+  const footerLinks = [
+    { name: t("nav.home"), path: "/" },
+    { name: t("footer.ourMenu"), path: "/menu" },
+    { name: t("footer.aboutUs"), path: "/about" },
+    { name: t("nav.gallery"), path: "/gallery" },
+    { name: t("nav.contact"), path: "/contact" },
+  ];
+
   return (
     <footer className="bg-charcoal text-cream/80">
       <div className="container-narrow mx-auto section-padding">
@@ -15,21 +26,15 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-cream/60">
-              Modern Georgian dining with an architectural soul. Experience culinary excellence in the heart of Tbilisi.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg text-cream mb-6">Explore</h4>
+            <h4 className="font-serif text-lg text-cream mb-6">{t("footer.explore")}</h4>
             <ul className="space-y-3">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Our Menu", path: "/menu" },
-                { name: "About Us", path: "/about" },
-                { name: "Gallery", path: "/gallery" },
-                { name: "Contact", path: "/contact" },
-              ].map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
@@ -44,7 +49,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-serif text-lg text-cream mb-6">Contact</h4>
+            <h4 className="font-serif text-lg text-cream mb-6">{t("footer.contactLabel")}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-gold shrink-0" />
@@ -65,8 +70,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 mt-1 text-gold shrink-0" />
                 <span className="text-sm">
-                  Open Daily<br />
-                  Until 2:00 AM
+                  {t("location.openDaily")}<br />
+                  {t("location.until2am")}
                 </span>
               </li>
             </ul>
@@ -74,7 +79,7 @@ const Footer = () => {
 
           {/* External Links */}
           <div>
-            <h4 className="font-serif text-lg text-cream mb-6">Connect</h4>
+            <h4 className="font-serif text-lg text-cream mb-6">{t("footer.connect")}</h4>
             <ul className="space-y-4">
               <li>
                 <a
@@ -84,7 +89,7 @@ const Footer = () => {
                   className="flex items-center gap-3 hover:text-gold transition-colors text-sm"
                 >
                   <ExternalLink className="w-4 h-4 text-gold" />
-                  View Full Menu
+                  {t("footer.viewFullMenu")}
                 </a>
               </li>
               <li>
@@ -97,7 +102,7 @@ const Footer = () => {
                   <svg className="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
-                  Facebook
+                  {t("footer.facebook")}
                 </a>
               </li>
               <li>
@@ -108,7 +113,7 @@ const Footer = () => {
                   className="flex items-center gap-3 hover:text-gold transition-colors text-sm"
                 >
                   <MapPin className="w-4 h-4 text-gold" />
-                  View on Map
+                  {t("footer.viewOnMap")}
                 </a>
               </li>
             </ul>
@@ -118,7 +123,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-cream/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-cream/40">
-            © {new Date().getFullYear()} Varazi Restaurant. All rights reserved.
+            © {new Date().getFullYear()} Varazi Restaurant. {t("footer.rights")}
           </p>
           <p className="text-xs text-cream/40">
             რესტორანი ვარაზი • Tbilisi, Georgia

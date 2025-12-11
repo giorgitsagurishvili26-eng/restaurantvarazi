@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import interiorOrbImage from "@/assets/interior-orb-lights.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutPreview = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding bg-cream">
       <div className="container-narrow mx-auto">
@@ -24,22 +27,18 @@ const AboutPreview = () => {
           {/* Content */}
           <div className="order-1 lg:order-2">
             <span className="text-gold text-xs tracking-[0.3em] uppercase mb-4 block">
-              Our Story
+              {t("about.label")}
             </span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
-              Where Architecture<br />Meets Gastronomy
+              {t("about.title1")}<br />{t("about.title2")}
             </h2>
             <div className="space-y-4 text-muted-foreground mb-8">
-              <p>
-                Nestled in the vibrant Varaziskhevi district, Varazi Restaurant stands as a testament to modern Georgian hospitality. Our space harmoniously blends contemporary architecture with nature's serenity.
-              </p>
-              <p>
-                Step inside to discover soaring ceilings adorned with geometric light installations, living trees that breathe life into every corner, and an atmosphere that feels both intimate and grand.
-              </p>
+              <p>{t("about.p1")}</p>
+              <p>{t("about.p2")}</p>
             </div>
             <Button variant="minimal" asChild>
               <Link to="/about" className="group inline-flex items-center gap-2">
-                Discover More
+                {t("about.discoverMore")}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>

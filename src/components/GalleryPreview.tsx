@@ -5,27 +5,29 @@ import { ArrowRight, X } from "lucide-react";
 import exteriorImage from "@/assets/exterior.jpg";
 import interiorOrbImage from "@/assets/interior-orb-lights.jpg";
 import interiorAmberImage from "@/assets/interior-amber-lights.jpg";
-
-const galleryImages = [
-  {
-    src: exteriorImage,
-    alt: "Varazi Restaurant modern Corten steel exterior architecture",
-    title: "The Entrance",
-  },
-  {
-    src: interiorOrbImage,
-    alt: "Main dining room with geometric orb ceiling lights and indoor trees",
-    title: "Main Dining Hall",
-  },
-  {
-    src: interiorAmberImage,
-    alt: "Intimate seating area with amber pendant lights and lush greenery",
-    title: "Evening Ambiance",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const GalleryPreview = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const { t } = useLanguage();
+
+  const galleryImages = [
+    {
+      src: exteriorImage,
+      alt: "Varazi Restaurant modern Corten steel exterior architecture",
+      title: t("gallery.entrance"),
+    },
+    {
+      src: interiorOrbImage,
+      alt: "Main dining room with geometric orb ceiling lights and indoor trees",
+      title: t("gallery.mainHall"),
+    },
+    {
+      src: interiorAmberImage,
+      alt: "Intimate seating area with amber pendant lights and lush greenery",
+      title: t("gallery.evening"),
+    },
+  ];
 
   return (
     <>
@@ -34,15 +36,15 @@ const GalleryPreview = () => {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
               <span className="text-gold text-xs tracking-[0.3em] uppercase mb-4 block">
-                Visual Journey
+                {t("gallery.label")}
               </span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-cream">
-                Gallery
+                {t("gallery.title")}
               </h2>
             </div>
             <Button variant="minimal" className="text-cream hover:text-gold" asChild>
               <Link to="/gallery" className="group inline-flex items-center gap-2">
-                View All Photos
+                {t("gallery.viewAll")}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
