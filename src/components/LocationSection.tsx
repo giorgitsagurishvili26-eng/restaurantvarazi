@@ -1,8 +1,11 @@
 import { MapPin, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const LocationSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding bg-cream">
       <div className="container-narrow mx-auto">
@@ -24,10 +27,10 @@ const LocationSection = () => {
           {/* Info */}
           <div className="flex flex-col justify-center">
             <span className="text-gold text-xs tracking-[0.3em] uppercase mb-4 block">
-              Find Us
+              {t("location.label")}
             </span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-charcoal mb-8">
-              Visit Varazi
+              {t("location.title")}
             </h2>
 
             <div className="space-y-6 mb-10">
@@ -36,7 +39,7 @@ const LocationSection = () => {
                   <MapPin className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg text-charcoal mb-1">Address</h3>
+                  <h3 className="font-serif text-lg text-charcoal mb-1">{t("location.address")}</h3>
                   <p className="text-muted-foreground">
                     1 ვარაზისხევის ქუჩა<br />
                     თბილისი 0179, საქართველო
@@ -47,7 +50,7 @@ const LocationSection = () => {
                     rel="noopener noreferrer"
                     className="text-gold hover:underline text-sm mt-1 inline-block"
                   >
-                    Get Directions →
+                    {t("location.directions")}
                   </a>
                 </div>
               </div>
@@ -57,10 +60,10 @@ const LocationSection = () => {
                   <Clock className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg text-charcoal mb-1">Hours</h3>
+                  <h3 className="font-serif text-lg text-charcoal mb-1">{t("location.hours")}</h3>
                   <p className="text-muted-foreground">
-                    Open Daily<br />
-                    <span className="text-gold font-medium">Until 2:00 AM</span>
+                    {t("location.openDaily")}<br />
+                    <span className="text-gold font-medium">{t("location.until2am")}</span>
                   </p>
                 </div>
               </div>
@@ -70,7 +73,7 @@ const LocationSection = () => {
                   <Phone className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg text-charcoal mb-1">Reservations</h3>
+                  <h3 className="font-serif text-lg text-charcoal mb-1">{t("location.reservations")}</h3>
                   <a
                     href="tel:+995593908010"
                     className="text-muted-foreground hover:text-gold transition-colors"
@@ -82,7 +85,7 @@ const LocationSection = () => {
             </div>
 
             <Button variant="gold" size="lg" asChild>
-              <Link to="/contact">Make a Reservation</Link>
+              <Link to="/contact">{t("nav.makeReservation")}</Link>
             </Button>
           </div>
         </div>

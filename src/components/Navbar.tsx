@@ -3,19 +3,22 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Menu", path: "/menu" },
-  { name: "About", path: "/about" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "Contact", path: "/contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { name: t("nav.home"), path: "/" },
+    { name: t("nav.menu"), path: "/menu" },
+    { name: t("nav.about"), path: "/about" },
+    { name: t("nav.gallery"), path: "/gallery" },
+    { name: t("nav.contact"), path: "/contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +75,7 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
+          <LanguageSwitcher />
           <a
             href="tel:+995593908010"
             className="flex items-center gap-2 text-cream/80 hover:text-gold transition-colors text-sm"
@@ -80,7 +84,7 @@ const Navbar = () => {
             <span className="hidden xl:inline">+995 593 90 80 10</span>
           </a>
           <Button variant="heroOutline" size="sm" asChild>
-            <Link to="/contact">Reserve</Link>
+            <Link to="/contact">{t("nav.reserve")}</Link>
           </Button>
         </div>
 
@@ -111,6 +115,8 @@ const Navbar = () => {
           <X className="w-6 h-6" />
         </button>
 
+        <LanguageSwitcher />
+
         {navLinks.map((link, index) => (
           <Link
             key={link.path}
@@ -135,7 +141,7 @@ const Navbar = () => {
             +995 593 90 80 10
           </a>
           <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">Make a Reservation</Link>
+            <Link to="/contact">{t("nav.makeReservation")}</Link>
           </Button>
         </div>
       </div>
